@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Student Analytics Dashboard</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/graph.css') }}">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+<div class="header">
+
+    <div>
+        <h1>Student Analytics Dashboard</h1>
+        <p>Machine Learning Performance Visualization</p>
+    </div>
+
+    <div class="header-buttons">
+        <a href="/report" class="btn">Report</a>
+        <a href="/dashboard" class="btn">Dashboard</a>
+    </div>
+
+</div>
+
+<!-- KPI Cards -->
+
+<div class="stats-grid">
+
+    <div class="stat-card">
+        <h2>{{ attendance }}%</h2>
+        <p>Attendance</p>
+    </div>
+
+    <div class="stat-card">
+        <h2>{{ study_hours }}</h2>
+        <p>Study Hours</p>
+    </div>
+
+    <div class="stat-card">
+        <h2>{{ assignment }}</h2>
+        <p>Assignments</p>
+    </div>
+
+    <div class="stat-card">
+        <h2>{{ prediction }}</h2>
+        <p>Predicted Score</p>
+    </div>
+
+</div>
+
+<!-- Charts -->
+
+<div class="chart-grid">
+
+    <div class="chart-card">
+
+        <h2>Performance Comparison</h2>
+
+        <canvas id="barChart"></canvas>
+
+    </div>
+
+    <div class="chart-card">
+
+        <h2>Skill Analysis</h2>
+
+        <canvas id="radarChart"></canvas>
+
+    </div>
+
+</div>
+
+<!-- AI Insights -->
+
+<div class="insight-card">
+
+    <h2>AI Performance Insights</h2>
+
+    <p>
+        The machine learning model analyzed attendance,
+        study hours, assignment performance, and previous
+        academic records to estimate future academic success.
+    </p>
+
+    <p>
+        Predicted Score:
+        <strong>{{ prediction }}</strong>
+    </p>
+
+    <p>
+        Grade:
+        <strong>{{ grade }}</strong>
+    </p>
+
+    <p>
+        Status:
+        <strong>{{ status }}</strong>
+    </p>
+
+</div>
+</div>
+
+<script>
+
+const barCtx =
+document.getElementById('barChart');
+
+new Chart(barCtx, {
+
+type:'bar',
+
+data:{
+labels:[
+'Attendance',
+'Study Hours',
+'Assignment',
+'Previous Marks',
+'Prediction'
+],
+
+datasets:[{
+label:'Performance',
+data:[
+{{ attendance }},
+{{ study_hours }},
+{{ assignment }},
+{{ previous }},
+{{ prediction }}
+],
+backgroundColor:[
+'#6366f1',
+'#8b5cf6',
+'#06b6d4',
+'#10b981',
+'#f59e0b'
+]
+}]
+},
+
+options:{
+responsive:true
+}
+
+});
+
+const radarCtx =
+document.getElementById('radarChart');
+
+new Chart(radarCtx, {
+
+type:'radar',
+
+data:{
+
+labels:[
+'Attendance',
+'Study',
+'Assignment',
+'Previous',
+'Prediction'
+],
+
+datasets:[{
+
+label:'Student Analysis',
+
+data:[
+{{ attendance }},
+{{ study_hours }},
+{{ assignment }},
+{{ previous }},
+{{ prediction }}
+],
+
+backgroundColor:'rgba(99,102,241,0.3)',
+
+borderColor:'#6366f1',
+
+borderWidth:2
+
+}]
+},
+
+options:{
+responsive:true
+}
+
+});
+
+</script>
+
+</body>
+</html>

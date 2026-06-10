@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Dashboard</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/dashboard.css') }}">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Navbar -->
+    <nav class="navbar">
+
+        <div class="logo">
+            🎓 Student Performance Prediction System
+        </div>
+
+        <div class="nav-right">
+            <span class="user-name">
+                Welcome, {{ session['user'] }}
+            </span>
+
+            <a href="/" class="logout-btn">
+                Logout
+            </a>
+        </div>
+
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero">
+
+        <h1>
+            Student Academic Analytics Dashboard
+        </h1>
+
+        <p>
+            Predict and analyze academic performance using Machine Learning algorithms.
+        </p>
+
+    </div>
+
+    <!-- Statistics -->
+    <div class="stats">
+
+        <div class="card">
+            <h2>120</h2>
+            <p>Total Predictions</p>
+        </div>
+
+        <div class="card">
+            <h2>85%</h2>
+            <p>Average Score</p>
+        </div>
+
+        <div class="card">
+            <h2>Excellent</h2>
+            <p>Performance Level</p>
+        </div>
+
+        <div class="card">
+            <h2>500+</h2>
+            <p>Dataset Records</p>
+        </div>
+
+    </div>
+
+    <!-- Project Info -->
+    <div class="info-section">
+
+        <div class="info-box">
+
+            <h2>About Project</h2>
+
+            <p>
+                This system uses Machine Learning techniques such as
+                Random Forest, Decision Tree and Linear Regression
+                to predict student academic performance based on
+                attendance, study hours, assignments and previous marks.
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="action-section">
+
+        <h2>Ready to Predict?</h2>
+
+        <a href="/predict" class="predict-btn">
+            Start Performance Prediction
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

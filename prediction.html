@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Student Performance Prediction</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/prediction.css') }}">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Top Navigation -->
+
+    <div class="top-bar">
+
+        <div>
+            <h1>Student Performance Prediction</h1>
+            <p>Machine Learning Academic Analytics System</p>
+        </div>
+
+        <a href="/dashboard" class="back-btn">
+            Dashboard
+        </a>
+
+    </div>
+
+    <!-- Main Content -->
+
+    <div class="prediction-card">
+
+        <!-- Form -->
+
+        <div class="left-section">
+
+            <h2>Student Information</h2>
+
+            <form method="POST">
+
+                <div class="input-group">
+                    <label>Student Name</label>
+                    <input type="text"
+                           name="name"
+                           placeholder="Enter Student Name"
+                           required>
+                </div>
+
+                <div class="input-group">
+                    <label>Attendance (%)</label>
+                    <input type="number"
+                           name="attendance"
+                           min="0"
+                           max="100"
+                           required>
+                </div>
+
+                <div class="input-group">
+                    <label>Study Hours Per Day</label>
+                    <input type="number"
+                           name="study_hours"
+                           min="0"
+                           max="24"
+                           required>
+                </div>
+
+                <div class="input-group">
+                    <label>Assignment Score</label>
+                    <input type="number"
+                           name="assignment"
+                           min="0"
+                           max="100"
+                           required>
+                </div>
+
+                <div class="input-group">
+                    <label>Previous Marks</label>
+                    <input type="number"
+                           name="previous"
+                           min="0"
+                           max="100"
+                           required>
+                </div>
+
+                <button type="submit">
+                    Predict Performance
+                </button>
+
+            </form>
+
+        </div>
+
+        <!-- Right Side -->
+
+        <div class="right-section">
+
+            <h2>Prediction Factors</h2>
+
+            <div class="factor-card">
+                📅 <strong>Attendance</strong>
+                <p>Regular attendance positively impacts learning outcomes.</p>
+            </div>
+
+            <div class="factor-card">
+                📚 <strong>Study Hours</strong>
+                <p>Consistent study habits improve understanding and retention.</p>
+            </div>
+
+            <div class="factor-card">
+                📝 <strong>Assignments</strong>
+                <p>Assignment performance reflects practical understanding.</p>
+            </div>
+
+            <div class="factor-card">
+                🎯 <strong>Previous Marks</strong>
+                <p>Historical performance helps predict future results.</p>
+            </div>
+
+            <div class="info-box">
+
+                <h3>AI Prediction Model</h3>
+
+                <p>
+                    This system uses Machine Learning algorithms such as
+                    Random Forest, Linear Regression, and Decision Tree
+                    to predict student performance.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

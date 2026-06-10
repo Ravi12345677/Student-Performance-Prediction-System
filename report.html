@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Student Performance Report</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/report.css') }}">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="report-wrapper">
+<!-- Top Banner -->
+
+<div class="top-banner">
+
+    <div>
+        <h1>Student Performance Report</h1>
+        <p>Machine Learning Academic Analytics Dashboard</p>
+    </div>
+
+    <button onclick="window.print()" class="download-btn">
+        Download Report
+    </button>
+
+</div>
+
+<!-- Student Profile -->
+
+<div class="profile-card">
+
+    <div class="avatar">
+        {{ name[0] }}
+    </div>
+
+    <div>
+        <h2>{{ name }}</h2>
+        <p>Academic Performance Analysis</p>
+    </div>
+
+</div>
+
+<!-- Statistics Cards -->
+
+<div class="stats-grid">
+
+    <div class="card">
+        <h3>{{ attendance }}%</h3>
+        <span>Attendance</span>
+    </div>
+
+    <div class="card">
+        <h3>{{ study_hours }}</h3>
+        <span>Study Hours</span>
+    </div>
+
+    <div class="card">
+        <h3>{{ assignment }}</h3>
+        <span>Assignments</span>
+    </div>
+
+    <div class="card">
+        <h3>{{ previous }}</h3>
+        <span>Previous Marks</span>
+    </div>
+
+</div>
+
+<!-- Prediction Section -->
+
+<div class="prediction-section">
+
+    <div class="score-card">
+
+        <h2>Predicted Score</h2>
+
+        <div class="score-circle">
+            {{ prediction }}
+        </div>
+
+    </div>
+
+    <div class="grade-status">
+
+        <div class="grade-box">
+            <h3>Grade</h3>
+            <p>{{ grade }}</p>
+        </div>
+
+        <div class="status-box">
+            <h3>Status</h3>
+            <p>{{ status }}</p>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- AI Insights -->
+
+<div class="insight-card">
+
+    <h2>AI Performance Insights</h2>
+
+    <p>
+        Based on the provided academic indicators,
+        the Machine Learning model predicts the student's
+        future academic performance. Attendance, study
+        consistency, assignment quality, and previous
+        academic achievements significantly influence
+        the final prediction.
+    </p>
+
+</div>
+
+<!-- Recommendations -->
+
+<div class="recommendation-card">
+
+    <h2>Recommendations</h2>
+
+    <ul>
+
+        {% if attendance < 75 %}
+        <li>Improve attendance to enhance learning outcomes.</li>
+        {% endif %}
+
+        {% if study_hours < 4 %}
+        <li>Increase study hours for better subject understanding.</li>
+        {% endif %}
+
+        {% if assignment < 70 %}
+        <li>Focus on improving assignment performance.</li>
+        {% endif %}
+
+        {% if previous < 70 %}
+        <li>Revise weaker topics from previous assessments.</li>
+        {% endif %}
+
+        {% if prediction >= 80 %}
+        <li>Excellent work. Maintain consistency and keep improving.</li>
+        {% endif %}
+
+    </ul>
+
+</div>
+
+<!-- Bottom Actions -->
+
+<div class="action-buttons">
+
+    <!-- <a href="/dashboard" class="btn">
+        Dashboard
+    </a> -->
+
+    <!-- <a href="/predict" class="btn">
+        New Prediction
+    </a> -->
+
+    <div class="action-buttons">
+
+    <a href="/dashboard" class="btn">
+        Dashboard
+    </a>
+
+    <a href="/predict" class="btn">
+        New Prediction
+    </a>
+
+    <a href="/graph" class="btn graph-btn">
+        View Analytics Graph
+    </a>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>
